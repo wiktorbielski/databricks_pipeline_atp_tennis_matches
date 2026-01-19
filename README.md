@@ -1,9 +1,25 @@
 # 🎾 ATP Tennis Data Pipeline – Databricks Medallion ETL
 
 A **Bronze → Silver → Gold** ETL pipeline for ATP tennis data using **Databricks, PySpark, and Delta Lake**.  
-Ingests raw CSVs, cleans data, applies quality checks, and produces analytics-ready tables.
+Ingests raw CSVs, cleans data, applies quality checks, and produces analytics-ready tables. The pipeline is fully **orchestrated and scheduled using Databricks Jobs**.
 
 ---
+
+## 🏗️ Pipeline Overview
+
+**Pipeline Flow:**
+- **Bronze**: Raw CSVs from [JeffSackmann/tennis_atp](https://github.com/JeffSackmann/tennis_atp)
+  - Raw data ingestion, minimal transformations
+- **Silver**: Cleaned & validated Delta tables
+  - Standardization, QA checks, partitioned by year
+- **Gold**: Fact & Dimension tables for analytics
+  - Enriched matches, players, rankings; derived metrics
+ 
+**Orchestration:**  
+- Fully automated via Databricks Jobs
+- Scheduled daily at **08:00 Europe/Warsaw time**
+- Tasks executed sequentially: `bronze_layer → silver_layer → gold_layer`
+- Retry logic and cluster configuration defined in `job_configuration_structure.yaml`
 
 ## 📂 Repository
 
