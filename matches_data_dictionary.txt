@@ -1,90 +1,185 @@
-tourney_id
-- a unique identifier for each tournament, such as 2020-888. The exact formats are borrowed from several different sources, so while the first four characters are always the year, the rest of the ID doesn't follow a predictable structure.
+Tennis Tournament Data Fields
 
-tourney_name
-surface
-draw_size
-- number of players in the draw, often rounded up to the nearest power of 2. (For instance, a tournament with 28 players may be shown as 32.)
+tourney_id:
+- A unique identifier for each tournament, such as "2020-888".
+- The first four characters always represent the year.
+- The rest of the ID does not follow a predictable structure.
 
-tourney_level
-- For men: 'G' = Grand Slams, 'M' = Masters 1000s, 'A' = other tour-level events, 'C' = Challengers, 'S' = Satellites/ITFs, 'F' = Tour finals and other season-ending events, and 'D' = Davis Cup 
-- For women, there are several additional tourney_level codes, including 'P' = Premier, 'PM' = Premier Mandatory, and 'I' = International. The various levels of ITFs are given by the prize money (in thousands), such as '15' = ITF $15,000. Other codes, such as 'T1' for Tier I (and so on) are used for older WTA tournament designations. 'D' is used for Federation/Fed/Billie Jean King Cup, and also for Wightman Cup and Bonne Bell Cup.
+tourney_name:
+- Name of the tournament.
 
-- Others, eventually for both genders: 'E' = exhibition (events not sanctioned by the tour, though the definitions can be ambiguous), 'J' = juniors, and 'T' = team tennis, which does yet appear anywhere in the dataset but will at some point.
+surface:
+- Type of surface the tournament is played on.
 
-tourney_date
-- eight digits, YYYYMMDD, usually the Monday of the tournament week.
+draw_size:
+- Number of players in the draw.
+- Often rounded up to the nearest power of 2 (e.g., 28 players might be shown as 32).
 
-match_num
-- a match-specific identifier. Often starting from 1, sometimes counting down from 300, and sometimes arbitrary. 
+tourney_level:
+- For men:
+  - 'G' = Grand Slams
+  - 'M' = Masters 1000s
+  - 'A' = Other tour-level events
+  - 'C' = Challengers
+  - 'S' = Satellites/ITFs
+  - 'F' = Tour finals and season-ending events
+  - 'D' = Davis Cup
+- For women:
+  - 'P' = Premier
+  - 'PM' = Premier Mandatory
+  - 'I' = International
+  - Levels of ITFs indicated by prize money (e.g., '15' = ITF $15,000)
+  - Older WTA designations (e.g., 'T1' for Tier I)
+  - 'D' for Federation/Fed/Billie Jean King Cup, Wightman Cup, Bonne Bell Cup
+- Others for both genders:
+  - 'E' = Exhibition (non-tour sanctioned events)
+  - 'J' = Juniors
+  - 'T' = Team tennis (not yet in dataset)
 
-winner_id
-- the player_id used in this repo for the winner of the match
+tourney_date:
+- Eight digits, format YYYYMMDD.
+- Typically the Monday of the tournament week.
 
-winner_seed
-winner_entry
-- 'WC' = wild card, 'Q' = qualifier, 'LL' = lucky loser, 'PR' = protected ranking, 'ITF' = ITF entry, and there are a few others that are occasionally used.
+match_num:
+- A match-specific identifier.
+- Often starts from 1, sometimes counts down from 300, or can be arbitrary.
 
-winner_name
-winner_hand
-- R = right, L = left, U = unknown. For ambidextrous players, this is their serving hand.
-winner_ht
-- height in centimeters, where available
+winner_id:
+- The player_id for the winner of the match.
 
-winner_ioc
-- three-character country code
+winner_seed:
+- Seed number of the winner.
 
-winner_age
-- age, in years, as of the tourney_date
+winner_entry:
+- Entry status of the winner:
+  - 'WC' = Wild card
+  - 'Q' = Qualifier
+  - 'LL' = Lucky loser
+  - 'PR' = Protected ranking
+  - 'ITF' = ITF entry
 
-loser_id
-loser_seed
-loser_entry
-loser_name
-loser_hand
-loser_ht
-loser_ioc
-loser_age
-score
-best_of
-- '3' or '5', indicating the the number of sets for this match
+winner_name:
+- Name of the winner.
 
-round
-minutes
-- match length, where available
+winner_hand:
+- Serving hand of the winner:
+  - 'R' = Right
+  - 'L' = Left
+  - 'U' = Unknown (For ambidextrous players, this is their serving hand)
 
-w_ace
-- winner's number of aces
-w_df
-- winner's number of doubles faults
-w_svpt
-- winner's number of serve points
-w_1stIn
-- winner's number of first serves made
-w_1stWon
-- winner's number of first-serve points won
-w_2ndWon
-- winner's number of second-serve points won
-w_SvGms
-- winner's number of serve games
-w_bpSaved
-- winner's number of break points saved
-w_bpFaced
-- winner's number of break points faced
+winner_ht:
+- Height of the winner in centimeters, where available.
 
-l_ace
-l_df
-l_svpt
-l_1stIn
-l_1stWon
-l_2ndWon
-l_SvGms
-l_bpSaved
-l_bpFaced
+winner_ioc:
+- Three-character country code of the winner.
 
-winner_rank
-- winner's ATP or WTA rank, as of the tourney_date, or the most recent ranking date before the tourney_date
-winner_rank_points
-- number of ranking points, where available
-loser_rank
-loser_rank_points
+winner_age:
+- Age of the winner, in years, as of the tourney_date.
+
+loser_id:
+- The player_id for the loser of the match.
+
+loser_seed:
+- Seed number of the loser.
+
+loser_entry:
+- Entry status of the loser.
+
+loser_name:
+- Name of the loser.
+
+loser_hand:
+- Serving hand of the loser.
+
+loser_ht:
+- Height of the loser in centimeters, where available.
+
+loser_ioc:
+- Three-character country code of the loser.
+
+loser_age:
+- Age of the loser, in years, as of the tourney_date.
+
+score:
+- Match score.
+
+best_of:
+- Number of sets in the match ('3' or '5').
+
+round:
+- Round of the match.
+
+minutes:
+- Length of the match, where available.
+
+Statistics for Winner:
+
+w_ace:
+- Number of aces by the winner.
+
+w_df:
+- Number of double faults by the winner.
+
+w_svpt:
+- Number of serve points by the winner.
+
+w_1stIn:
+- Number of first serves made by the winner.
+
+w_1stWon:
+- Number of first-serve points won by the winner.
+
+w_2ndWon:
+- Number of second-serve points won by the winner.
+
+w_SvGms:
+- Number of serve games by the winner.
+
+w_bpSaved:
+- Number of break points saved by the winner.
+
+w_bpFaced:
+- Number of break points faced by the winner.
+
+Statistics for Loser:
+
+l_ace:
+- Number of aces by the loser.
+
+l_df:
+- Number of double faults by the loser.
+
+l_svpt:
+- Number of serve points by the loser.
+
+l_1stIn:
+- Number of first serves made by the loser.
+
+l_1stWon:
+- Number of first-serve points won by the loser.
+
+l_2ndWon:
+- Number of second-serve points won by the loser.
+
+l_SvGms:
+- Number of serve games by the loser.
+
+l_bpSaved:
+- Number of break points saved by the loser.
+
+l_bpFaced:
+- Number of break points faced by the loser.
+
+Rank Information:
+
+winner_rank:
+- ATP or WTA rank of the winner, as of the tourney_date or the most recent ranking date before it.
+
+winner_rank_points:
+- Number of ranking points of the winner, where available.
+
+loser_rank:
+- ATP or WTA rank of the loser.
+
+loser_rank_points:
+- Number of ranking points of the loser.
