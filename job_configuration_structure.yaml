@@ -1,0 +1,36 @@
+resources:
+  jobs:
+    de_project_pipeline_atp_tennis_matches:
+      name: de_project_pipeline_atp_tennis_matches
+      schedule:
+        quartz_cron_expression: 0 0 8 * * ?
+        timezone_id: Europe/Warsaw
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: bronze_layerS
+          notebook_task:
+            notebook_path: /Workspace/Users/your_username/DEV/project/bronze_layer
+            source: WORKSPACE
+          existing_cluster_id: <CLUSTER_ID>
+          max_retries: 1
+          min_retry_interval_millis: 900000
+        - task_key: silver_layer
+          depends_on:
+            - task_key: bronze_layer
+          notebook_task:
+            notebook_path: /Workspace/Users/your_username/DEV/project/silver_layer
+            source: WORKSPACE
+          existing_cluster_id: <CLUSTER_ID>
+          max_retries: 1
+          min_retry_interval_millis: 900000
+        - task_key: gold_layer
+          depends_on:
+            - task_key: silver_layer
+          notebook_task:
+            notebook_path: /Workspace/Users/your_username/DEV/project/gold_layer
+            source: WORKSPACE
+          existing_cluster_id: <CLUSTER_ID>
+          max_retries: 1
+          min_retry_interval_millis: 900000
+      queue:
+        enabled: true
