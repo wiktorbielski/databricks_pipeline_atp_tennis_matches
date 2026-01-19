@@ -17,7 +17,7 @@ Ingests raw CSVs, cleans data, applies quality checks, and produces analytics-re
  
 **Orchestration:**  
 - Fully automated via Databricks Jobs
-- Scheduled daily at **08:00 Europe/Warsaw time**
+- Scheduled daily at 08:00 Europe/Warsaw time
 - Tasks executed sequentially: `bronze_layer → silver_layer → gold_layer`
 - Retry logic and cluster configuration defined in `job_configuration_structure.yaml`
 
@@ -25,7 +25,7 @@ Ingests raw CSVs, cleans data, applies quality checks, and produces analytics-re
 
 | Layer | Description | Link |
 |-------|------------|------|
-| Bronze | Raw ATP CSV ingestion (data sourced from [JeffSackmann/tennis_atp](https://github.com/JeffSackmann/tennis_atp)) | [bronze_layer.ipynb](https://github.com/wiktorbielski/databricks_pipeline_atp_tennis_matches/blob/main/bronze_layer.ipynb) |
+| Bronze | Raw ATP CSV ingestion | [bronze_layer.ipynb](https://github.com/wiktorbielski/databricks_pipeline_atp_tennis_matches/blob/main/bronze_layer.ipynb) |
 | Silver | Data cleansing, normalization, QA checks | [silver_layer.ipynb](https://github.com/wiktorbielski/databricks_pipeline_atp_tennis_matches/blob/main/silver_layer.ipynb) |
 | Gold | Analytics-ready fact & dimension tables | [gold_layer.ipynb](https://github.com/wiktorbielski/databricks_pipeline_atp_tennis_matches/blob/main/gold_layer.ipynb) |
 | Docs | Column definitions | [matches_data_dictionary.txt](https://github.com/wiktorbielski/databricks_pipeline_atp_tennis_matches/blob/main/matches_data_dictionary.txt) |
